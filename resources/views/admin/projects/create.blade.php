@@ -23,7 +23,8 @@
                 <select class="form-select" name="type_id" id="type_id">
                     <option value="">Select category</option>
                     @foreach ($types as $type)
-                        <option value="{{ $type->id }}" {{ old('type_id') == $type->id ? 'selected' : '' }}>{{ $type->name }}</option>
+                        <option value="{{ $type->id }}" {{ old('type_id') == $type->id ? 'selected' : '' }}>
+                            {{ $type->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -53,6 +54,14 @@
 
                 <label class="form-label ms-3" for="end_date">End date</label>
                 <input type="date" id="end_date" name="end_date">
+            </div>
+            <div class='mb-3' id="technologies_div">
+                @foreach ($technologies as $technology)
+                    <label class="custom-badge badge-not-selected p-2 rounded text-white me-2" for="">
+                        <input class="tech-check d-none" type="checkbox" name="technologies[]" id=""
+                            value="{{ $technology->id }}" {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>{{$technology->name}}
+                    </label>
+                @endforeach
             </div>
             <div class="form-check">
                 <label class="form-check-label" for="is_completed">Project completed</label>

@@ -19,3 +19,16 @@
 .project-image {
     width: 18.75rem;
 }
+
+.custom-badge {
+    cursor: pointer;
+    user-select: none;
+}
+
+.badge-not-selected {
+    background-color: gray;
+}
+
+.badge-selected {
+    background-color:darkblue;
+}
