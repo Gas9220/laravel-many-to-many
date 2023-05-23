@@ -18,6 +18,7 @@
         <div><a href="{{ $technology->url }}">Technology documentation</a></div>
         <div>Technology category: {{ $technology->category }}</div>
         <div>Technology slug: {{ $technology->slug }}</div>
+        <h4 class="mt-2">{{$technology->name.' is included in this projects.'}}</h4>
         <table class="table">
             <thead>
                 <tr>
