@@ -48,7 +48,7 @@ class ProjectController extends Controller
     {
         $request->validated();
         $data = $request->all();
-        
+
         $new_project = new Project();
         $new_project->fill($data);
 
@@ -88,7 +88,9 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
-        return view('admin.projects.edit', compact('project', 'types'));
+        $technologies = Technology::all();
+
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -117,6 +119,9 @@ class ProjectController extends Controller
             $project->project_image = null;
 
         }
+
+        $technologies = isset($data['technologies']) ? $data['technologies'] : [];
+        $project->technologies()->sync($technologies);
 
         $project->update($data);
         return to_route('admin.projects.show', $project->id)->with('message', 'Hai modificato con successo il progetto');

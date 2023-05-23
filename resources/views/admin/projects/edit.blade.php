@@ -16,7 +16,8 @@
             <h2 class="fs-4 text-secondary my-4">Edit Project</h2>
         </div>
 
-        <form action="{{ route('admin.projects.update', $project) }}" method="POST" enctype="multipart/form-data" id="edit-project-form">
+        <form action="{{ route('admin.projects.update', $project) }}" method="POST" enctype="multipart/form-data"
+            id="edit-project-form">
             @csrf
             @method('PUT')
             <div class="mb-3">
@@ -24,7 +25,8 @@
                 <select class="form-select" name="type_id" id="type_id">
                     <option value="">Select category</option>
                     @foreach ($types as $type)
-                        <option value="{{ $type->id }}" {{ $project->type_id == $type->id ? 'selected' : '' }}>{{ $type->name }}</option>
+                        <option value="{{ $type->id }}" {{ $project->type_id == $type->id ? 'selected' : '' }}>
+                            {{ $type->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -49,7 +51,8 @@
                 @if ($project->project_image)
                     <input type="text" class="d-none" id="remove-img-input" name="delete_prev_image">
                     <span id="img-removed-message" class="d-none mt-2 text-success">Previous image removed</span>
-                    <button type="button" class="btn btn-danger btn-sm mt-2" id="remove-img-btn">Remove previus image</button>
+                    <button type="button" class="btn btn-danger btn-sm mt-2" id="remove-img-btn">Remove previus
+                        image</button>
                 @endif
             </div>
             <div class="mb-3">
@@ -64,6 +67,25 @@
 
                 <label class="form-label ms-3" for="end_date">End date</label>
                 <input type="date" id="end_date" name="end_date" value="{{ old('end_date', $project->end_date) }}">
+            </div>
+            <div class='mb-3' id="technologies_div">
+                @if ($errors->any())
+                    @foreach ($technologies as $technology)
+                        <label class="custom-badge badge-not-selected p-2 rounded text-white me-2" for="">
+                            <input class="tech-check d-none" type="checkbox" name="technologies[]" id=""
+                                value="{{ $technology->id }}"
+                                {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>{{ $technology->name }}
+                        </label>
+                    @endforeach
+                @else
+                    @foreach ($technologies as $technology)
+                        <label class="custom-badge {{ $project->technologies->contains($technology->id) ? 'badge-selected' : 'badge-not-selected' }} p-2 rounded text-white me-2" for="">
+                            <input class="tech-check d-none" type="checkbox" name="technologies[]" id=""
+                                value="{{ $technology->id }}"
+                                {{ $project->technologies->contains($technology->id) ? 'checked' : '' }}>{{ $technology->name }}
+                        </label>
+                    @endforeach
+                @endif
             </div>
             <div class="form-check">
                 <label class="form-check-label" for="is_completed">Project completed</label>
