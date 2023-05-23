@@ -14,10 +14,9 @@
                     class="bi bi-pencil-fill"></i></a>
         </div>
         @if ($project->type)
-        <a href="{{ route('admin.types.show', $project->type) }}">
-            <span
-                class="badge text-bg-{{ $project->type?->type_color() }} fs-5">{{ $project->type->name  }}</span>
-        </a>  
+            <a href="{{ route('admin.types.show', $project->type) }}">
+                <span class="badge text-bg-{{ $project->type?->type_color() }} fs-5">{{ $project->type->name }}</span>
+            </a>
         @endif
 
         <h4>Project name: {{ $project->project_name }}</h4>
@@ -35,7 +34,9 @@
 
         <h6 class="mt-4">Used technologies</h6>
         @foreach ($project->technologies as $project_technology)
-            <span class="badge text-bg-{{ $project->type?->type_color() }}">{{ $project_technology->name }}</span>
+            <a href="{{ route('admin.technologies.show', $project_technology) }}" class="text-decoration-none">
+                <span class="badge text-bg-{{ $project->type?->type_color() }}">{{ $project_technology->name }}</span>
+            </a>
         @endforeach
     </div>
 @endsection
