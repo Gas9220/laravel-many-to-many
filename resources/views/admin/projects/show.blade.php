@@ -26,5 +26,10 @@
         <div>Project summary: {{ $project->project_summary }}</div>
         <div>Project status: {{ $project->is_completed == 0 ? 'Not Completed' : 'Completed' }}</div>
         <div>Project slug: {{ $project->slug }}</div>
+
+        <h6 class="mt-4">Used technologies</h6>
+        @foreach ($project->technologies as $project_technology)
+            <span class="badge text-bg-{{$project->type?->type_color()}}">{{$project_technology->name}}</span>
+        @endforeach
     </div>
 @endsection
