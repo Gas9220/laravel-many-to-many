@@ -10,10 +10,16 @@
                     {{ session('message') }}
                 </div>
             @endif
-            <a href="{{ route('admin.projects.edit', $project->id) }}"
-                class="btn btn-primary btn-sm me-2 ms-auto"><i class="bi bi-pencil-fill"></i></a>
+            <a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-primary btn-sm me-2 ms-auto"><i
+                    class="bi bi-pencil-fill"></i></a>
         </div>
-        <span class="badge text-bg-{{$project->type?->type_color()}} fs-5">{{ $project->type?->name ?: 'Nessun tag' }}</span>
+        @if ($project->type)
+        <a href="{{ route('admin.types.show', $project->type) }}">
+            <span
+                class="badge text-bg-{{ $project->type?->type_color() }} fs-5">{{ $project->type->name  }}</span>
+        </a>  
+        @endif
+
         <h4>Project name: {{ $project->project_name }}</h4>
         @if (isset($project->project_image))
             <img src="{{ asset('storage/' . $project->project_image) }}" alt='{{ $project->project_name . ' image' }}'
@@ -29,7 +35,7 @@
 
         <h6 class="mt-4">Used technologies</h6>
         @foreach ($project->technologies as $project_technology)
-            <span class="badge text-bg-{{$project->type?->type_color()}}">{{$project_technology->name}}</span>
+            <span class="badge text-bg-{{ $project->type?->type_color() }}">{{ $project_technology->name }}</span>
         @endforeach
     </div>
 @endsection
