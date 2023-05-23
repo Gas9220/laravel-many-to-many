@@ -30,15 +30,15 @@
             </div>
             <div class="mb-3">
                 <label for="project_name" class="form-label">Project name</label>
-                <input type="text" class="form-control" id="project_name" name="project_name">
+                <input type="text" class="form-control" id="project_name" name="project_name" value="{{old('project_name')}}">
             </div>
             <div class="mb-3">
                 <label for="client" class="form-label">Client</label>
-                <input type="text" class="form-control" id="client" name="client">
+                <input type="text" class="form-control" id="client" name="client" value="{{old('client')}}">
             </div>
             <div class="mb-3">
                 <label for="project_summary" class="form-label">Project Summary</label>
-                <input type="text" class="form-control" id="project_summary" name="project_summary">
+                <input type="text" class="form-control" id="project_summary" name="project_summary" value="{{old('project_summary')}}">
             </div>
             <div class="mb-3">
                 <label for="project_image" class="form-label">Project Image</label>
@@ -46,18 +46,18 @@
             </div>
             <div class="mb-4">
                 <label for="revenues" class="form-label">Revenues</label>
-                <input type="numeric" class="form-control" id="revenues" name="revenues">
+                <input type="numeric" class="form-control" id="revenues" name="revenues" value="{{old('revenues')}}">
             </div>
             <div class="mb-3">
                 <label class="form-label" for="start_date">Start date</label>
-                <input type="date" id="start_date" name="start_date">
+                <input type="date" id="start_date" name="start_date" value="{{old('start_date')}}">
 
                 <label class="form-label ms-3" for="end_date">End date</label>
-                <input type="date" id="end_date" name="end_date">
+                <input type="date" id="end_date" name="end_date" value="{{old('end_date')}}">
             </div>
             <div class='mb-3' id="technologies_div">
                 @foreach ($technologies as $technology)
-                    <label class="custom-badge badge-not-selected p-2 rounded text-white me-2" for="">
+                    <label class="custom-badge {{ in_array($technology->id, old('technologies', [])) ? 'badge-selected' : 'badge-not-selected' }} p-2 rounded text-white me-2" for="">
                         <input class="tech-check d-none" type="checkbox" name="technologies[]" id=""
                             value="{{ $technology->id }}" {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>{{$technology->name}}
                     </label>
