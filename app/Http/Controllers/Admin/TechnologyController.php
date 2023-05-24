@@ -55,7 +55,7 @@ class TechnologyController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Technology  $type
+     * @param  \App\Models\Technology  $technology
      * @return \Illuminate\Http\Response
      */
     public function show(Technology $technology)
@@ -66,11 +66,12 @@ class TechnologyController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Technology  $category
+     * @param  \App\Models\Technology  $technology
      * @return \Illuminate\Http\Response
      */
     public function edit(Technology $technology)
     {
+        return view('admin.technologies.edit', compact('technology'));
     }
 
     /**
@@ -82,6 +83,11 @@ class TechnologyController extends Controller
      */
     public function update(UpdateTechnologyRequest $request, Technology $technology)
     {
+        $request->validated();
+        $data = $request->all();
+        $technology->slug = Str::slug($request['name']);
+        $technology->update($data);
+        return to_route('admin.technologies.show', $technology->id)->with('message', 'Hai modificato con successo la technologia');
     }
 
     /**
