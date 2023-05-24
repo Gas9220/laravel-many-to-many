@@ -34,19 +34,6 @@ if (document.getElementById('edit-project-form')) {
 if (document.getElementById('technologies_div')) {
     const techBadges = document.querySelectorAll('.custom-badge');
 
-    const techCheckboxes = document.querySelectorAll('.tech-check');
-
-    // (TODO) Non funziona, dovrebbe impostare i badge selezionati quandi ci sono errori
-    // techCheckboxes.forEach(function (techCheckbox) {
-    //     // console.log(techCheckbox.checked)
-    //     if (techCheckbox.checked) {
-    //         techBadges.forEach(function (techBadge) {
-    //             techBadge.classList.remove('badge-not-selected');
-    //             techBadge.classList.add('badge-selected');
-    //         })
-    //     }
-    // })
-
     techBadges.forEach(function (techBadge) {
         techBadge.addEventListener('click', function () {
             // console.log(techBadge.children[0])
