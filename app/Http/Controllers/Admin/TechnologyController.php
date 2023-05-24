@@ -87,7 +87,7 @@ class TechnologyController extends Controller
         $data = $request->all();
         $technology->slug = Str::slug($request['name']);
         $technology->update($data);
-        return to_route('admin.technologies.show', $technology->id)->with('message', 'Hai modificato con successo la technologia');
+        return to_route('admin.technologies.show', $technology->id)->with('message', 'Hai modificato con successo la tecnologia');
     }
 
     /**

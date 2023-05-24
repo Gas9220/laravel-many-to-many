@@ -3,22 +3,22 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex align-items-center">
-            {{-- <a href="{{ route('admin.technologies.index') }}" class="btn btn-primary btn-sm me-2">Back</a> --}}
+            <a href="{{ route('admin.technologies.index') }}" class="btn btn-primary btn-sm me-2">Back</a>
             <h2 class="fs-4 text-secondary my-4">Technology Details</h2>
             @if (session('message'))
                 <div class="alert alert-success ms-auto p-2" role="alert">
                     {{ session('message') }}
                 </div>
             @endif
-            {{-- <a href="{{ route('admin.technologies.edit', $technology->id) }}" class="btn btn-primary btn-sm me-2 ms-auto"><i
-                    class="bi bi-pencil-fill"></i></a> --}}
+            <a href="{{ route('admin.technologies.edit', $technology->id) }}" class="btn btn-primary btn-sm me-2 ms-auto"><i
+                    class="bi bi-pencil-fill"></i></a>
         </div>
         <span class="badge text-bg-primary fs-5">{{ $technology->name }}</span>
         <div>Technology description: {{ $technology->description }}</div>
         <div><a href="{{ $technology->url }}">Technology documentation</a></div>
         <div>Technology category: {{ $technology->category }}</div>
         <div>Technology slug: {{ $technology->slug }}</div>
-        <h4 class="mt-2">{{$technology->name.' is included in this projects.'}}</h4>
+        <h4 class="mt-2">{{ $technology->name . ' is included in this projects.' }}</h4>
         <table class="table">
             <thead>
                 <tr>
