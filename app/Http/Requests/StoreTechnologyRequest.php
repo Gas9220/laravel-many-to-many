@@ -23,6 +23,11 @@ class StoreTechnologyRequest extends FormRequest
      */
     public function rules()
     {
-        return [];
+        return [
+            'name' => 'max:50|unique:technologies|string|required',
+            'description' => 'string|required',
+            'url' => 'nullable|url',
+            'category' => 'string|required'
+        ];
     }
 }
