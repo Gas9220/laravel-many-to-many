@@ -32,7 +32,8 @@ class StoreProjectRequest extends FormRequest
             'client' => 'required|string',
             'project_summary' => 'required|string',
             'is_completed' => 'boolean',
-            'project_image' => 'nullable|image'
+            'project_image' => 'nullable|image',
+            'technologies' => 'nullable|exists:technologies,id'
         ];
     }
 }
