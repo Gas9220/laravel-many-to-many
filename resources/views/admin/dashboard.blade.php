@@ -78,9 +78,9 @@
                         @endforeach
                     </div>
                     <div class="card-header bg-primary">
-                        <a href="{{ Route('admin.types.index') }}"
+                        <a href="{{ Route('admin.technologies.index') }}"
                             class="text-decoration-none d-flex align-items-center text-white fw-bold">
-                            Go to types list
+                            Go to technologies list
                             <i class="ms-2 bi bi-arrow-right-circle-fill fs-3"></i>
                         </a>
                     </div>
